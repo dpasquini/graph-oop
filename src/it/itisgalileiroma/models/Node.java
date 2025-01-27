@@ -8,9 +8,9 @@ import java.util.List;
 public class Node {
 
     private int id;
-    private List<Node> neighbors;
+    private List<Integer> neighbors;
 
-    public Node(int id, List<Node> neighbors) {
+    public Node(int id, List<Integer> neighbors) {
         this.id = id;
         this.neighbors = neighbors;
     }
@@ -36,14 +36,19 @@ public class Node {
     }
 
     /***
-     *
+     * Made easier than before
+     * We set node IDs, not node objects
      * @return list of node's neighbors
      */
-    public List<Node> neighbors() {
+    public List<Integer> neighbors() {
         return neighbors;
     }
 
-    public void setNeighbors(List<Node> neighbors) {
+    public void setNeighbors(List<Integer> neighbors) {
         this.neighbors = neighbors;
+    }
+
+    public void addNeighbor(int id) {
+        this.neighbors.add(id);
     }
 }

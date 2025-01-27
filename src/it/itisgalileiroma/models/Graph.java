@@ -32,17 +32,22 @@ public class Graph {
      * Add a node to a graph, if it has not already been inserted
      * @param node to add
      */
-    public void addNode(Node node) {
+    public int addNode(Node node) {
         boolean notEquals = true;
+        int indexNode = -1; // we need to check the index of the node to insert (or alreay inserted)
+
         for(int i = 0; i < nodes.size(); i++) {
             if(nodes.get(i).id() == node.id()) {
                 notEquals = false;
+                indexNode = i;
                 break;
             }
         }
         if(notEquals) {
             nodes.add(node);
+            indexNode = nodes.size() - 1;
         }
+        return indexNode;
     }
 
     /**
@@ -62,11 +67,21 @@ public class Graph {
         }
 
         if(!exists) {
+            // first we add  nodes if they are not already inserted
+            // get the indices of the nodes because we
+            // we need to set the neighbors of each node in the next statements
+            // for each edge, target node is the neighbor of  source node
+            // and, since we assume that tha graph is not directed,
+            // for eache edge, source node is the neighbor of the target node
+            int indexSourceNode = this.addNode(edge.source());
+            int indexTargetNode = this.addNode(edge.target());
+
+            this.nodes().get(indexSourceNode).addNeighbor(edge.target().id());
+            this.nodes().get(indexTargetNode).addNeighbor(edge.source().id());
+
             Edge e = new Edge(edge.target(), edge.source(), edge.weight());
             edges.add(edge);
             edges.add(e);
-            this.addNode(edge.source());
-            this.addNode(edge.target());
         }
     }
 
