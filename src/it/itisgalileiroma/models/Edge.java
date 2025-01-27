@@ -1,7 +1,7 @@
 package it.itisgalileiroma.models;
 
 /***
- * Edge between two node (source and target)
+ * Edge between two nodes (source and target)
  * The edge can be weighted
  */
 public class Edge {
@@ -11,6 +11,12 @@ public class Edge {
     private Node target;
 
     public Edge(int weight, Node source, Node target) {
+        this.weight = weight;
+        this.source = source;
+        this.target = target;
+    }
+
+    public Edge(Node source, Node target, int weight) {
         this.weight = weight;
         this.source = source;
         this.target = target;

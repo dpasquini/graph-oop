@@ -15,6 +15,10 @@ public class Node {
         this.neighbors = neighbors;
     }
 
+    public Node(int id) {
+        this.id = id;
+    }
+
     public Node() {
 
     }
