@@ -96,4 +96,19 @@ public class Graph {
     public void setEdges(List<Edge> edges) {
         this.edges = edges;
     }
+
+    /**
+     * Return an object Node comparing the parameter id with all the node ids in the node list
+     * If id doesn't exist, return null
+     * @param id
+     * @return null if the passed id is not contained in the list of nodes of the graph; otherwise, the Node object whose id is equal to the passed parameter
+     */
+    public Node getNode(int id) {
+        for(Node node : nodes) {
+            if(node.id() == id) {
+                return node;
+            }
+        }
+        return null;
+    }
 }

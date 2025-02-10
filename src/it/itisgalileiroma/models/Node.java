@@ -1,5 +1,6 @@
 package it.itisgalileiroma.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -17,6 +18,7 @@ public class Node {
 
     public Node(int id) {
         this.id = id;
+        this.neighbors = new ArrayList<Integer>();
     }
 
     public Node() {
